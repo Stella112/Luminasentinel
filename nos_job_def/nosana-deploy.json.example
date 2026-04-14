@@ -1,0 +1,37 @@
+{
+  "version": "0.1",
+  "type": "container",
+  "meta": {
+    "trigger": "cli"
+  },
+  "ops": [
+    {
+      "type": "container/run",
+      "id": "lumina-sentinel-agent",
+      "args": {
+        "image": "ghcr.io/stella112/lumina-sentinel:latest",
+        "expose": 3000,
+        "env": {
+          "OPENAI_API_KEY": "nosana",
+          "OPENAI_API_URL": "https://5i8frj7ann99bbw9gzpprvzj2esugg39hxbb4unypskq.node.k8s.prd.nos.ci/v1",
+          "OPENAI_BASE_URL": "https://5i8frj7ann99bbw9gzpprvzj2esugg39hxbb4unypskq.node.k8s.prd.nos.ci/v1",
+          "MODEL_NAME": "Qwen3.5-27B-AWQ-4bit",
+          "OPENAI_MODEL": "Qwen3.5-9B-FP8",
+          "OPENAI_SMALL_MODEL": "Qwen3.5-9B-FP8",
+          "OPENAI_LARGE_MODEL": "Qwen3.5-9B-FP8",
+          "EMBEDDING_PROVIDER": "openai",
+          "OPENAI_EMBEDDING_URL": "https://api.openai.com/v1",
+          "OPENAI_EMBEDDING_API_KEY": "YOUR_OPENAI_KEY_HERE" ,
+          "IMAGE_GEN_PROVIDER": "none",
+          "SOLANA_RPC_URL": "https://solana-rpc.publicnode.com",
+          "SOLANA_PUBLIC_KEY": "243yLWNFLXB9R6hwvwVgmZXBD9RYw4bjfxWAxiGPHQeT",
+          "SOLANA_PRIVATE_KEY": "YOUR_PRIVATE_KEY_HERE",
+          "SERVER_PORT": "3000",
+          "TAVILY_API_KEY": "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",
+          "TELEGRAM_BOT_TOKEN": "8641214908:AAETTpzGy8CRGTxXR3NgLsqzNIBSiq1n5lI",
+          "ELIZA_ALLOW_DESTRUCTIVE_MIGRATIONS": "true"
+        }
+      }
+    }
+  ]
+}

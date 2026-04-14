@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+/* ============================================================
+   LUMINA SENTINEL — Design System v2.0 (Black + Silver + Gold)
+   Tailwind CSS v4 compatible — uses @utility directive
+   ============================================================ */
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+@keyframes gold-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes flare {
+  0%   { left: -150%; opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { left: 200%; opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* ============================================================
+   CSS VARIABLES — Light / Dark Themes
+   ============================================================ */
+
+:root,
+[data-theme="dark"] {
+  --bg:          #0A0A0F;
+  --bg-surface:  rgba(31, 31, 46, 0.78);
+  --text-primary:   #E5E5E5;
+  --text-secondary: #808080;
+  --border:         rgba(212, 175, 55, 0.2);
+  --border-silver:  rgba(192, 192, 192, 0.2);
+  --glow-gold:   0 0 40px rgba(212, 175, 55, 0.25);
+  --glow-silver: 0 0 30px rgba(192, 192, 192, 0.15);
+}
+
+[data-theme="light"] {
+  --bg:          #F8F7F4;
+  --bg-surface:  rgba(255, 255, 255, 0.88);
+  --text-primary:   #1A1A2E;
+  --text-secondary: #555570;
+  --border:         rgba(154, 122, 0, 0.25);
+  --border-silver:  rgba(100, 100, 130, 0.2);
+  --glow-gold:   0 4px 20px rgba(154, 122, 0, 0.12);
+  --glow-silver: 0 4px 15px rgba(100, 100, 130, 0.1);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html                   { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-outfit, system-ui, sans-serif);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk, system-ui, sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ============================================================
+   TAILWIND v4 — @utility definitions
+   ============================================================ */
+
+@utility glass {
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-silver);
+}
+
+@utility glass-gold {
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow-gold);
+}
+
+@utility gold-text {
+  background: linear-gradient(135deg, #C8A415 0%, #F5E6C8 40%, #D4AF37 60%, #BFA030 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shine 5s linear infinite;
+  filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.35));
+}
+
+@utility silver-text {
+  background: linear-gradient(160deg, #FFFFFF 0%, #E5E5E5 30%, #C0C0C0 60%, #808080 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+  color: #D4AF37;
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #B8960C 0%, #D4AF37 25%, #F5E6C8 50%, #D4AF37 75%, #B8960C 100%);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  color: #0A0A0F;
+  font-family: var(--font-space-grotesk, system-ui);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@utility btn-silver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-space-grotesk, system-ui);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@utility card-gold {
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow-gold);
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+@utility terminal {
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(0,0,0,0.8), 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+@utility chat-bubble-user {
+  background: linear-gradient(135deg, #B8960C, #D4AF37);
+  color: #0A0A0F;
+  font-weight: 500;
+}
+
+@utility chat-bubble-bot {
+  background: var(--bg-surface);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+@utility sparkle-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   HOVER & PSEUDO EFFECTS (plain CSS, not @utility)
+   ============================================================ */
+
+.btn-gold:hover {
+  box-shadow: 0 0 80px rgba(212, 175, 55, 0.7);
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.35), transparent);
+  pointer-events: none;
+  animation: flare 4s ease-in-out infinite;
+  left: -150%;
+}
+
+.btn-silver:hover {
+  background: rgba(192, 192, 192, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-gold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.card-gold:hover {
+  box-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #D4AF37, #808080);
+  border-radius: 4px;
+}

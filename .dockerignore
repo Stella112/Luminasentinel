@@ -42,6 +42,8 @@ Dockerfile
 # Temporary files
 *.tmp
 *.temp
+.eliza/
+data/
 .cache/
 
 # Test files

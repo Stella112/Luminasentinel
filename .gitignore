@@ -92,3 +92,22 @@ pnpm-lock.yaml
 bun.lockb
 /.eliza/.elizadb
 /dist
+
+# Nosana Secrets
+nos_job_def/*.json
+
+# Debug and Scratch
+*.txt
+*.log
+test_*
+scratch_*
+patch_*
+ask_user.md
+choice_debug.txt
+last_response.txt
+logs_debug.txt
+test_sdk.js
+test_sdk.ts
+scratch_test.py
+patch_fetch.js
+choice_debug.txt
